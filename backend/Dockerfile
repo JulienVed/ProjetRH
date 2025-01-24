@@ -1,17 +1,17 @@
-# Use a base Python image
+# Utiliser une image de base Python
 FROM python:3.8-slim
 
-# Set the working directory in the container
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copy the requirements.txt file into the container
+# Copier le fichier requirements.txt dans le conteneur
 COPY requirements.txt requirements.txt
 
-# Install the Python dependencies
+# Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
+# Copier le reste du code de l'application dans le conteneur
 COPY . .
 
-# Set the default command to run the application
+# Définir la commande par défaut pour exécuter l'application
 CMD ["python", "app.py"]
