@@ -8,10 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Clean the npm cache and install dependencies
-RUN npm cache clean --force && npm install --timeout=600000
-
-# Update core-js to the latest version
-RUN npm install core-js@latest
+RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
 
 # Copy the rest of the application code into the container
 COPY . .
