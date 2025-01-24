@@ -5,10 +5,10 @@ FROM node:14
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files into the container
-COPY package*.json ./
+COPY package.json ./
 
 # Clean the npm cache and install dependencies
-#RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
+RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
 
 # Copy the rest of the application code into the container
 COPY . .
