@@ -13,6 +13,9 @@ RUN npm cache clean --force && npm install --timeout=600000 --registry=https://r
 # Copy the rest of the application code into the container
 COPY . .
 
+# Set the NODE_OPTIONS environment variable to use legacy OpenSSL providers
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # Build the application for production
 RUN npm run build
 

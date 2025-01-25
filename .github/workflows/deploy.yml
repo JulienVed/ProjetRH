@@ -23,6 +23,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker images
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
       run: |
         docker build -t Enilv/backend:latest -f backend/Dockerfile backend
         docker build -t Enilv/frontend:latest -f frontend/Dockerfile frontend
