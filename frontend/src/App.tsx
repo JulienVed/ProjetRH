@@ -1,17 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ImportCSV from './pages/ImportCSV';
+import EmployeeList from './components/EmployeeList';
+import EmployeeForm from './components/EmployeeForm';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/import" component={ImportCSV} />
-        </Switch>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/employees" element={<EmployeeList />} />
+        <Route path="/employees/new" element={<EmployeeForm />} />
+        <Route path="/employees/edit/:id" element={<EmployeeForm />} />
+      </Routes>
     </Router>
   );
 };
