@@ -26,10 +26,10 @@ jobs:
       env:
         NODE_OPTIONS: --openssl-legacy-provider
       run: |
-        docker build -t Enilv/backend:latest -f backend/Dockerfile backend
-        docker build -t Enilv/frontend:latest -f frontend/Dockerfile frontend
-        docker push Enilv/backend:latest
-        docker push Enilv/frontend:latest
+        docker build -t enilv/backend:latest -f backend/Dockerfile backend
+        docker build -t enilv/frontend:latest -f frontend/Dockerfile frontend
+        docker push enilv/backend:latest
+        docker push enilv/frontend:latest
 
     - name: Decode PEM key
       run: echo "${{ secrets.PEM_KEY_BASE64 }}" | base64 --decode > /tmp/your-key.pem
@@ -41,8 +41,8 @@ jobs:
         AWS_DEFAULT_REGION: eu-north-1
       run: |
         ssh -o StrictHostKeyChecking=no -i /tmp/your-key.pem ec2-user@ec2-16-170-224-151.eu-north-1.compute.amazonaws.com << 'EOF'
-          docker pull Enilv/backend:latest
-          docker pull Enilv/frontend:latest
+          docker pull enilv/backend:latest
+          docker pull enilv/frontend:latest
           cd /server/ProjetRH/deployment/aws
           docker-compose down
           docker-compose up -d
