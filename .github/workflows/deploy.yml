@@ -39,7 +39,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.PEM_KEY_BASE64 }}
+        key: /tmp/your-key.pem
         port: 22
         script: |
           docker pull enilv/backend:latest
