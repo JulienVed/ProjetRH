@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import EmployeeList from './components/EmployeeList';
 import EmployeeForm from './components/EmployeeForm';
+import { Employee } from './types'; // Import the Employee type
+
 
 const App: React.FC = () => {
   const handleFormSubmit = (employee: Employee) => {

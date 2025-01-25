@@ -6,7 +6,7 @@ interface EmployeeFormProps {
   onSubmit: (employee: Employee) => void;
 }
 
-const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }) => {
+const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }: EmployeeFormProps) => {
   const [formData, setFormData] = useState<Employee>({
     id: employee ? employee.id : '',
     firstName: employee ? employee.firstName : '',
