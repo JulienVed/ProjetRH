@@ -10,6 +10,9 @@ COPY package.json ./
 # Install the latest versions of React, ReactDOM, and React Router DOM
 RUN npm install react@latest react-dom@latest react-router-dom@latest
 
+# Install type declarations for React, ReactDOM, and React Router DOM
+RUN npm install --save-dev @types/react @types/react-dom @types/react-router-dom
+
 # Clean the npm cache and install dependencies
 RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
 
