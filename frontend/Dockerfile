@@ -13,7 +13,7 @@ RUN npm cache clean --force && npm install --timeout=600000 --registry=https://r
 RUN npm install react@latest react-dom@latest react-router-dom@latest
 
 # Install type declarations for React, ReactDOM, and React Router DOM
-RUN npm install --save-dev @types/react @types/react-dom @types/react-router-dom@^5.1.8
+RUN npm install --save-dev @types/react @types/react-dom @types/react-router-dom
 
 # Copy the rest of the application code into the container
 COPY . .
