@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files into the container
 COPY package.json ./
 
-# Install type declarations for React and ReactDOM
-RUN npm install --save-dev @types/react @types/react-dom @types/react-router-dom
+# Install the latest versions of React, ReactDOM, and React Router DOM
+RUN npm install react@latest react-dom@latest react-router-dom@latest
 
 # Clean the npm cache and install dependencies
 RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
