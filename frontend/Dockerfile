@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json ./
 
 # Install type declarations for React and ReactDOM
-RUN npm install --save-dev @types/react @types/react-dom
+RUN npm install --save-dev @types/react @types/react-dom @types/react-router-dom
 
 # Clean the npm cache and install dependencies
 RUN npm cache clean --force && npm install --timeout=600000 --registry=https://registry.npmjs.org/
