@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies using npm ci for faster and more reliable builds
-RUN npm ci --timeout=600000 --registry=https://registry.npmjs.org/
+RUN npm install --timeout=600000 --registry=https://registry.npmjs.org/
 
 # Copy the rest of the application code into the container
 COPY . .
