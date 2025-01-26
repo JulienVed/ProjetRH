@@ -9,8 +9,6 @@ COPY package*.json ./
 # Install dependencies using npm ci for faster and more reliable builds
 RUN npm install --timeout=600000 --registry=https://registry.npmjs.org/
 
-RUN npm install --save-dev @babel/plugin-transform-private-property-in-object
-
 # Copy the rest of the application code into the container
 COPY . .
 
