@@ -39,7 +39,8 @@ jobs:
         key: ${{ secrets.EC2_PEM_KEY }}
         port: 22
         script: |
-          cd /server/ProjetRH/deployment/aws
+          cd /server/ProjetRH
           docker-compose pull
+          cd /server/ProjetRH/deployment/aws
           docker-compose down
           docker-compose up -d
