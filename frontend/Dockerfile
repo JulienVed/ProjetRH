@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files into the container
 COPY package*.json ./
 
-# Clean the npm cache and install dependencies
-RUN npm install --timeout=600000 --registry=https://registry.npmjs.org/
+# Install dependencies using npm ci for faster and more reliable builds
+RUN npm ci --timeout=600000 --registry=https://registry.npmjs.org/
 
 # Copy the rest of the application code into the container
 COPY . .
@@ -20,6 +20,11 @@ RUN npm run build
 
 # Install serve to serve the build directory
 RUN npm install -g serve
+
+# Clean up unnecessary files to reduce image size
+RUN npm prune --production && \
+    npm cache clean --force && \
+    rm -rf /tmp/* /var/tmp/* /usr/share/man /usr/share/doc /usr/share/doc-base
 
 # Set the default command to serve the application
 CMD ["serve", "-s", "build"]

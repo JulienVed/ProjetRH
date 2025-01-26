@@ -40,7 +40,7 @@ jobs:
     - name: Deploy to AWS EC2
       run: |
         ssh -o StrictHostKeyChecking=no -i /tmp/your-key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          cd server/ProjetRH
+          cd ~/server/ProjetRH/deployment/aws/
           docker-compose pull
           docker-compose down
           docker-compose up -d
