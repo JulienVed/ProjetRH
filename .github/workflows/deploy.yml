@@ -31,22 +31,15 @@ jobs:
         docker push enilv/backend:latest
         docker push enilv/frontend:latest
 
-    - name: Decode PEM key
-      run: echo "${{ secrets.PEM_KEY_BASE64 }}" | base64 --decode > /tmp/your-key.pem
-
     - name: Deploy to AWS EC2
       uses: appleboy/ssh-action@v0.1.3
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: /tmp/your-key.pem
+        key: ${{ secrets.EC2_PEM_KEY }}
         port: 22
         script: |
-          docker pull enilv/backend:latest
-          docker pull enilv/frontend:latest
-          docker stop backend || true
-          docker rm backend || true
-          docker stop frontend || true
-          docker rm frontend || true
-          docker run -d --name backend enilv/backend:latest
-          docker run -d --name frontend -p 3000:3000 enilv/frontend:latest
+          cd /server/ProjetRH/deployment/aws
+          docker-compose pull
+          docker-compose down
+          docker-compose up -d
